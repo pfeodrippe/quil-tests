@@ -3,21 +3,6 @@
             [quil.middleware :as m]))
 
 
-(defn ease
-  ([p]
-   (- (* 3 p p)
-      (* 2 p p p)))
-  ([p g]
-   (if (< p 0.5)
-     (* 0.5
-        (Math/pow (* 2 p) g))
-     (- 1
-        (* 0.5
-           (Math/pow (* 2 (- 1 p)) g))))))
-
-
-(def mn (* 0.5 (Math/sqrt 3)))
-
 (def samples-per-frame 8)
 
 (def num-frames 360)
@@ -75,7 +60,7 @@
 
 
 (q/defsketch quil-test-01
-  :title "You spin my circle right round"
+  :title "Bee and Bombs - Dots"
   :size [700 500]
   ; setup function called only once, during sketch initialization.
   :setup setup
