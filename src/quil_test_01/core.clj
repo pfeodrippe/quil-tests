@@ -59,7 +59,7 @@
 
 
 (q/defsketch quil-test-01
-  :title "Bee and Bombs - Dots"
+  :title "Bees and Bombs - Dots"
   :size [700 500]
   :setup setup
   :update update-state
