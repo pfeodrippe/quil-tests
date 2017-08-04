@@ -1,6 +1,6 @@
 # quil-test-01
 
-A Quil sketch designed to ... well, that part is up to you.
+Runs examples from bees and bombs with clojure - https://twitter.com/beesandbombs
 
 ## Usage
 
@@ -12,7 +12,7 @@ REPL - run `(require 'quil-test-01.core)`.
 
 ## License
 
-Copyright © 2016 FIXME
+Copyright © 2017 FIXME
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
