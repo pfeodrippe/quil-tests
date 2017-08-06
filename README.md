@@ -1,4 +1,4 @@
-# quil-test-01
+# quil-tests
 
 Runs examples from bees and bombs with clojure - https://twitter.com/beesandbombs
 
@@ -10,7 +10,7 @@ LightTable - open `core.clj` and press `Ctrl+Shift+Enter` to evaluate the file.
 
 Emacs - run cider, open `core.clj` and press `C-c C-k` to evaluate the file.
 
-REPL - run `(require 'quil-test-01.core)`.
+REPL - run `(require 'quil-tests.core)`.
 
 ## License
 

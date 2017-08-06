@@ -1,4 +1,4 @@
-(ns quil-test-01.test2
+(ns quil-tests.core
   (:require [quil.core :as q]
             [quil.middleware :as m]))
 
@@ -8,23 +8,9 @@
 (defmacro with-matrix
   [& body]
   `(do
-     (quil.core/push-matrix)
+     (q/push-matrix)
      ~@body
-     (quil.core/pop-matrix)))
-
-
-(defmacro with-style
-  [bindings & body]
-  (let [styles (map
-                (fn [x]
-                  `(apply
-                   ~(symbol "quil.core" (name (first x)))
-                   ~(vec (rest x))))
-                bindings)]
-    `(do
-       (with-matrix
-         ~@styles
-         ~@body))))
+     (q/pop-matrix)))
 
 
 (def samples-per-frame 8)
@@ -61,15 +47,18 @@
         (q/translate (/ (q/width) 2) 160)
         (doseq [i (range 0 N)]
           (let [l (q/map-range i -0.75 (dec N) 0 320)]
-            (with-style [[:stroke 32] [:no-fill]]
-              (q/arc 0 0 (* 2 l) (* 2 l) 0 q/PI))
-            (with-style [[:fill 32] [:no-stroke]]
+            (q/stroke 32)
+            (q/no-fill)
+            (q/arc 0 0 (* 2 l) (* 2 l) 0 q/PI)
+            (q/fill 32)
+            (q/no-stroke)
+            (with-matrix
               (q/rotate (-> t (* (- N i)) (* q/TWO-PI) q/sin (* q/HALF-PI)))
               (q/translate 0 l)
               (q/ellipse 0 0 14 14))))))))
 
 
-(q/defsketch quil-test-01
+(q/defsketch test1
   :title "Bees and Bombs - Dots"
   :size [700 500]
   :setup setup
