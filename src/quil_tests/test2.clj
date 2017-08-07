@@ -19,7 +19,7 @@
 
 (def styles
   {:arc [[:stroke 32]
-          [:no-fill]]
+         [:no-fill]]
    :circle [[:fill 32]]})
 
 
@@ -28,7 +28,7 @@
 
 
 (defn draw-state [state]
-  (with-frames (q/frame-count)
+  (with-frames (q/frame-count) 8 360 0.35
     (q/background 250)
     (with-matrix
       (q/translate (/ (q/width) 2) 160)
@@ -46,7 +46,7 @@
             (q/ellipse 0 0 14 14)))))))
 
 
-(q/defsketch test2
+(q/defsketch sketch
   :title "Bees and Bombs - Dots"
   :size [700 500]
   :setup setup

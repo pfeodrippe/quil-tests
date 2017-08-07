@@ -10,6 +10,14 @@
      (q/pop-matrix)))
 
 
+(defmacro with-shape
+  [& body]
+  `(do
+     (q/begin-shape)
+     ~@body
+     (q/end-shape)))
+
+
 (defmacro with-style
   [styles & body]
   (let [styles# `(run!
@@ -23,23 +31,28 @@
        ~@body)))
 
 
-(def samples-per-frame 8)
-
-(def num-frames 360)
-
-(def shutter-angle 0.35)
-
-
 (defmacro with-frames
   "Creates a variable called ranged-frame to be used at the
   body scope"
-  [frame-count & body]
-  `(doseq [sa# (range 0 samples-per-frame)]
+  [frame-count samples-per-frame num-frames shutter-angle & body]
+  `(doseq [sa# (range 0 ~samples-per-frame)]
      (let [~'ranged-frame (q/map-range
                            (+ (dec ~frame-count)
-                              (-> sa# (* shutter-angle) (/ samples-per-frame)))
-                                       0
-                                       num-frames
-                                       0
-                                       1)]
+                              (-> sa# (* ~shutter-angle) (/ ~samples-per-frame)))
+                           0
+                           ~num-frames
+                           0
+                           1)]
        ~@body)))
+
+
+(defn ease
+  ([p]
+   (- (* 3 p p)
+      (* 2 p p p)))
+  ([p g]
+   (if (< p 0.5)
+     (* 0.5 (q/pow (* 2 p)
+                   g))
+     (* (- 1 0.5) (q/pow (* 2 (- 1 p))
+                         g)))))
