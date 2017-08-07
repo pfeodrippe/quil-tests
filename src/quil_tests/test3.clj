@@ -77,7 +77,7 @@
 
 
 (defn draw-state [state]
-  (with-frames (q/frame-count) 4 320 60
+  (with-frames (q/frame-count) 4 320 0.6
     (q/background 250)
     (with-matrix
       (q/translate (/ (q/width) 2)
