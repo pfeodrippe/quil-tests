@@ -8,7 +8,6 @@
 
 (def N 12000)
 (def R 270)
-(def ss 4)
 (def h 1E-5)
 
 
