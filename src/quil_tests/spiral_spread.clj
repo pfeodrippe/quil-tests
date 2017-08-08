@@ -1,4 +1,4 @@
-(ns quil-tests.test3
+(ns quil-tests.spiral-spread
   (:require [quil.core :as q]
             [quil.middleware :as m]
             [quil-tests.helpers :refer :all :as qh]))
