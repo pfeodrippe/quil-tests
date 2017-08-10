@@ -43,7 +43,8 @@
                            ~num-frames
                            0
                            1)]
-       ~@body)))
+       ~@body
+       (q/save-frame "f###.gif"))))
 
 
 (defn ease
