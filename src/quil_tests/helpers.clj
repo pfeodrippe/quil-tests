@@ -34,7 +34,7 @@
 (defmacro with-frames
   "Creates a variable called ranged-frame to be used at the
   body scope"
-  [frame-count samples-per-frame num-frames shutter-angle & body]
+  [frame-count samples-per-frame num-frames shutter-angle save? & body]
   `(doseq [sa# (range 0 ~samples-per-frame)]
      (let [~'ranged-frame (q/map-range
                            (+ (dec ~frame-count)
@@ -44,7 +44,10 @@
                            0
                            1)]
        ~@body
-       (q/save-frame "f###.gif"))))
+       (when ~save?
+         (q/save-frame "f###.gif")
+         (when (>= ~frame-count ~num-frames)
+           (q/exit))))))
 
 
 (defn ease
