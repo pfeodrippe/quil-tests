@@ -34,20 +34,36 @@
 (defmacro with-frames
   "Creates a variable called ranged-frame to be used at the
   body scope"
-  [frame-count samples-per-frame num-frames shutter-angle save? & body]
-  `(doseq [sa# (range 0 ~samples-per-frame)]
-     (let [~'ranged-frame (q/map-range
-                           (+ (dec ~frame-count)
-                              (-> sa# (* ~shutter-angle) (/ ~samples-per-frame)))
-                           0
-                           ~num-frames
-                           0
-                           1)]
+  [frame-count samples-per-frame num-frames
+   shutter-angle max-frames save? & body]
+  `(if ~save?
+     (do
+       (doseq [sa# (range 0 ~samples-per-frame)]
+         (let [~'ranged-frame (q/map-range
+                               (+ (dec ~frame-count)
+                                  (-> sa# (* ~shutter-angle) (/ ~samples-per-frame)))
+                               0
+                               ~num-frames
+                               0
+                               1)]
+           ~@body))
+       (q/save-frame "f###.gif")
+       (when (or (>= ~frame-count ~num-frames)
+                 (>= ~frame-count ~max-frames))
+         (q/exit)))
+     (let [~'ranged-frame (q/map-range (dec ~frame-count) 0 ~num-frames 0 1)]
        ~@body
-       (when ~save?
-         (q/save-frame "f###.gif")
-         (when (>= ~frame-count ~num-frames)
-           (q/exit))))))
+       (with-matrix
+         (q/text (str ~frame-count "\n" ~'ranged-frame)
+                 (- (q/width) 100)
+                 20)))
+     #_(let [~'ranged-frame (/ (float (q/mouse-x))
+                             (q/width))]
+       ~@body
+       )))
+
+
+
 
 
 (defn ease

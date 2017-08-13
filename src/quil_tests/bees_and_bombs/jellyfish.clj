@@ -1,4 +1,4 @@
-(ns quil-tests.jellyfish
+(ns quil-tests.bees-and-bombs.jellyfish
   (:require [quil.core :as q]
             [quil.middleware :as m]
             [quil-tests.helpers :refer :all :as qh]))
@@ -71,7 +71,7 @@
 
 
 (defn draw-state [state]
-  (with-frames (q/frame-count) 1 100 0.6 true
+  (with-frames (q/frame-count) 1 100 0.6 100 false
     (q/background 0)
     (with-matrix
       (q/translate (/ (q/width) 2)
@@ -85,7 +85,7 @@
         (q/rotate (- (/ q/TWO-PI 3)))
         (lines ranged-frame))
       (with-matrix
-        (q/stroke ranged-frame 1 1)
+        (q/stroke 0 1 1)
         (q/translate 0 0 (-> ranged-frame
                              (* q/TWO-PI)
                              (+ (* q/TWO-PI 0.525))

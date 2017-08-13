@@ -1,4 +1,4 @@
-(ns quil-tests.spiral-spread
+(ns quil-tests.bees-and-bombs.spiral-spread
   (:require [quil.core :as q]
             [quil.middleware :as m]
             [quil-tests.helpers :refer :all :as qh]))
@@ -76,7 +76,7 @@
 
 
 (defn draw-state [state]
-  (with-frames (q/frame-count) 4 320 0.6 false
+  (with-frames (q/frame-count) 4 320 0.6 320 false
     (q/background 250)
     (with-matrix
       (q/translate (/ (q/width) 2)

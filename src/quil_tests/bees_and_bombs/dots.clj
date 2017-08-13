@@ -1,4 +1,4 @@
-(ns quil-tests.dots
+(ns quil-tests.bees-and-bombs.dots
   (:require [quil.core :as q]
             [quil.middleware :as m]
             [quil-tests.helpers :refer :all]))
@@ -28,7 +28,7 @@
 
 
 (defn draw-state [state]
-  (with-frames (q/frame-count) 8 360 0.35 false
+  (with-frames (q/frame-count) 8 360 0.35 360 false
     (q/background 250)
     (with-matrix
       (q/translate (/ (q/width) 2) 160)
