@@ -1,8 +1,6 @@
 # quil-tests
 
-Runs examples from bees and bombs with clojure - https://twitter.com/beesandbombs
-
-See it online at http://quil.info/sketches/show/-Kqf7-VT0cPqDAouBowG
+Runs examples from bees and bombs (at `bees_and_bombs` folder - https://twitter.com/beesandbombs) and some of mine (at `src/quil_tests`) with clojure
 
 ## Usage
 
