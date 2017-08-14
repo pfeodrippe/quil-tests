@@ -1,2 +1,2 @@
 all:
-	convert -delay 5 -loop 0 *.gif myimage.gif
+	gifsicle --delay=5 --loop *.gif --colors 8 > output/anim.gif
