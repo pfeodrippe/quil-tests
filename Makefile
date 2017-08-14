@@ -1,2 +1,2 @@
 all:
-	gifsicle --delay=5 --loop *.gif --colors 8 > output/anim.gif
+	gifsicle --delay=5 --loop *.gif --colors 12 > output/anim.gif
