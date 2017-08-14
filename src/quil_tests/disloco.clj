@@ -24,19 +24,6 @@
   {})
 
 
-(defn sined-ellipse [ranged-frame amp size op]
-  (q/ellipse 0
-             0
-             (-> ranged-frame
-                 (* 10)
-                 (q/cos)
-                 (* 100))
-             (-> ranged-frame
-                 (* 10)
-                 (q/cos)
-                 (* 100))))
-
-
 (defn wiggled-square [ranged-frame i j freq amp interval]
   (with-shape
     (q/translate (+ (- 235) (* i interval))
