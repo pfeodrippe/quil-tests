@@ -14,7 +14,8 @@
   [& body]
   `(do
      (q/begin-shape)
-     ~@body
+     (with-matrix
+       ~@body)
      (q/end-shape)))
 
 
@@ -54,6 +55,7 @@
      (let [~'ranged-frame (q/map-range (dec ~frame-count) 0 ~num-frames 0 1)]
        ~@body
        (with-matrix
+         (q/fill 150)
          (q/text (str ~frame-count "\n" ~'ranged-frame)
                  (- (q/width) 100)
                  20)))
