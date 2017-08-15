@@ -76,8 +76,8 @@
                         4 10)))))
 
 
-(q/defsketch Disloco
-  :title "Paulo Feodrippe - Disloco"
+(q/defsketch Dislocó
+  :title "Paulo Feodrippe - Dislocó"
   :size [500  500]
   :setup setup
   :update update-state
