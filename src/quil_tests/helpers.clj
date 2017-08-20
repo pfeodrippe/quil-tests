@@ -2,6 +2,9 @@
   (:require [quil.core :as q]))
 
 
+;; Some ideias taken from https://gist.github.com/beesandbombs
+
+
 (defmacro with-matrix
   [& body]
   `(do
@@ -28,8 +31,10 @@
                      (rest x#)))
                   ~styles)]
     `(with-matrix
+       (q/push-style)
        ~styles#
-       ~@body)))
+       ~@body
+       (q/pop-style))))
 
 
 (defmacro with-frames
@@ -49,12 +54,15 @@
                                1)]
            ~@body))
        (q/save-frame "f###.gif")
-       (when (or (>= ~frame-count ~num-frames)
+       (when (or #_(>= ~frame-count ~num-frames)
                  (>= ~frame-count ~max-frames))
          (q/exit)))
-     (let [~'ranged-frame (q/map-range (dec ~frame-count) 0 ~num-frames 0 1)]
+     (let #_[~'ranged-frame (* 2
+                             (/ (float (q/mouse-x))
+                                (q/width)))]
+          [~'ranged-frame (q/map-range (dec ~frame-count) 0 ~num-frames 0 1)]
        ~@body
-       (with-matrix
+       (with-style []
          (q/fill 150)
          (q/text (str ~frame-count "\n" ~'ranged-frame)
                  (- (q/width) 100)
