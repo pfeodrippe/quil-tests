@@ -18,7 +18,7 @@
   {:texts [["nunca  em  um  único  segundo"
             "tantas  pessoas  da  minha  vida"]
            ["viajaram  pra  tão  longe  e  eu  ainda"
-            "eu meio  que  entregue  ao  desmundo"]
+            "meio  que  entregue  ao  mundo"]
            ["como  brinco  sem  eles"
             "como  filho  bom  que  sou"]
            ["como  amo  sem  ela"
@@ -46,7 +46,7 @@
                      (/ @a r 0.7)
                      rotation
                      (-> ranged-frame
-                         (* 1.0)
+                         (* 3.0)
                          q/cos
                          (* 1.5)))]
         (with-matrix #_[[:translate (+ (- gap half-width) (* i gap)) 0]]
@@ -82,7 +82,7 @@
 
 
 (defn draw-state [state]
-  (with-frames (q/frame-count) 1 150 0.35 150 true
+  (with-frames (q/frame-count) 1 150 0.35 900 true
     (q/background 244 255 136)
     (q/no-stroke)
     (q/no-fill)
