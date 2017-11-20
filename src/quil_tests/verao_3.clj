@@ -25,7 +25,7 @@
 
 
 (defn draw-state [state]
-  (with-frames (q/frame-count) 1 150 0.35 150 true
+  (with-frames (q/frame-count) 1 150 0.35 150 false
     (q/background 255 223 219)
     (q/no-stroke)
     (with-style [[:fill 200 202 204]
